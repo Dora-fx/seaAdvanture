@@ -1,0 +1,165 @@
+-
+    let mainMenu = [
+        {
+            name: "ГОловна",
+            url: "#"
+        },
+        {
+            name: "послуги",
+            url: "#"
+        },
+        {
+            name: "про компанію",
+            url: "#"
+        },
+        {
+            name: "Акції",
+            url: "#"
+        },
+        {
+            name: "Партнери",
+            url: "#"
+        },
+        {
+            name: "відгуки",
+            url: "#"
+        },
+        {
+            name: "Контакти",
+            url: "#"
+        }
+    ]
+mixin menu (items)
+    ul.navbar-nav
+        for item in items
+            li.nav-item 
+                a.d-block.p-3.text-decoration-none.text-uppercase(href=item.url) #{item.name}
+
+- 
+    let planTrip = {
+        first: {
+            use: "#bike",
+            h3: "Тур на велосипедах",
+            price: "335",
+            p: "Подорожуючи  на велосипеді, ви поринете в атмосферу мальовничих гір, чарівнмх краєвидів та шалених пригод.",
+        },
+        second: {
+            key: true,
+            use: "#circle",
+            h3: "Екскурсія на острів",
+            price: "500",
+            p: "Подорож на острів занурить Вас у незабутнні пригоди. Неймовірна краса  у будь-яку пору року.",
+        },
+        third: {
+            key: true,
+            use: "#contactUs",
+            h3: "Особливе замовлення",
+            price: "250",
+            p: "Обираючи цю подорож, Ви самостійно робите її незабутнбою та не схожою на будь-які інші."
+        },
+    }
+
+mixin card (oneTrip)
+    figure.tripCard(class=oneTrip.key?"greenStar":"")
+        figcaption 
+            .text-center
+                svg.title-svg 
+                    use(xlink:href=oneTrip.use)
+            h3.text-center #{oneTrip.h3}
+            p.price.text-center.mb-2 #{oneTrip.price} 
+                |грн*
+            p.gray-text #{oneTrip.p}
+
+- 
+    let weekOffer = {
+        first: {
+            key: true,
+            src: "../img/so-romanticTrip.jpg",
+            alt: "romantic trip",
+            h3: "Романтична подорож на 2",
+            p: "Подорож у найромантичніші куточки світу, занурить вас у дивовижні пейзажі природи.",
+            price: "2599",
+            href: "#",
+        },
+        second: {
+            key: true,
+            isBike: true,
+            src: "../img/so-cycling.jpg",
+            alt: "cycling",
+            h3: "Велотур",
+            p: "Бажаєте прокататись з вітерцем, та ще й з критим краєвидом довкола? Тоді швидше замовляй велотур!",
+            price: "555",
+            href: "#",
+        },
+        third: {
+            key: true,
+            src: "../img/so-onIsland.jpg",
+            alt: "onIsland",
+            h3: "На острови!",
+            p: "Хочеш зануритись у тишу, місце де не має натовпу, та панує дмка природа? Тоді вперед за пригодами!",
+            price: "1559",
+            href: "#",
+        },
+        fourth: {
+            key: true,
+            src: "../img/so-surf.jpg",
+            alt: "surf",
+            h3: "Катання на сьорфінгу",
+            p: "Хочеш отримати екстрим та мега вражень одночасно? Тоді вперед ловити хвилі!",
+            price: "999",
+            href: "#",
+        },
+    }
+
+mixin specialOffer (oneOffer)
+    figure.specialOffer(class=oneOffer.key?"greenStar":"")
+        figcaption
+            div(class=oneOffer.isBike?"blueBike":"")
+                if oneOffer.isBike 
+                    svg 
+                        use(xlink:href="#bike") 
+                img.w-100(src=oneOffer.src, alt=oneOffer.alt)
+            .specialOffer-content
+                h3 #{oneOffer.h3}
+                p.gray-text.my-3 #{oneOffer.p}
+                .price-order.d-flex.justify-content-between.align-items-center 
+                    p.price #{oneOffer.price} 
+                        |грн*
+                    a(href=oneOffer.href).rounded-arrow замовити
+                        svg 
+                            use(xlink:href="#roundedArrow")
+
+- 
+    let extraInfo = {
+        schedule: {
+            use: "#file",
+            h3: "Графік роботи готелів.xls",
+            p: "Розмір файла: 10Mb",
+            benef: "Розклад роботи усіх наших готелів, можете знайти за цим посиланням. Та додатково завантажити їх фото.",
+            aUse: "#cloud",
+            href: "#",
+        },
+        food: {
+            use: "#file",
+            h3: "Інформація про харчування.xls",
+            p: "Розмір файла: 10Mb",
+            benef: "У будь-якому нашому турі включені сніданки у вартість. Якщо ж бажаєте замовити додотково, то ознайомтесь з умовами.",
+            aUse: "#cloud",
+            href: "#",
+        },
+    }
+
+mixin information (item)
+    .info-card
+        .files-info.d-flex.gap-3
+            .div-svg
+                svg 
+                    use(xlink:href=item.use)
+            div
+                h3 #{item.h3}
+                p #{item.p}
+        p.white-benef.mb-4 #{item.benef}
+        a(href=item.href).cloud-btn скачати
+            svg 
+                use(xlink:href=item.aUse) 
+        

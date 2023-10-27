@@ -1,0 +1,142 @@
+doctype html
+html(lang="en")
+    head
+        include components/mixin
+        
+        meta(charset="UTF-8")
+        //- змінити бургер
+        //- мобільна версія
+        
+        meta(name="viewport", content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Rubik:ital@0;1&display=swap" rel="stylesheet")
+        link(rel="stylesheet", href="css/styles.css")
+        title Sea Advanture
+    body
+        .d-none 
+            include ../img/sprite.svg
+        header 
+            .container-fluid.topBackground
+                .container
+                    //-використані класи бутспрапа, спробувати накидати сітку
+                    nav.topNavigation.d-flex.justify-content-between.navbar.navbar-expand-lg
+                        a.logo.navbar-brand
+                            img(src="img/logo.png", alt="logo")
+                        .navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarTogglerDemo02")
+                            span.navbar-toggler-icon
+                        #navbarTogglerDemo02.main-menu.collapse.navbar-collapse.justify-content-end 
+                            +menu(mainMenu)
+                .container
+                    .border-headerInfo.mx-auto
+                        .headerInfo.text-center 
+                            h1 Морські пригоди
+                            p.subTitle Не важливо, чи Ваша мандрівка належить до елітного рівня чи до економваріанту, туроператор S trips потурбується, щоб Ви залишились задоволеними!
+                            a(href="#").accent-btn детальніше
+                .container 
+                    .titleCenter.text-center.title-paragraph
+                        h2 обери свій план подорож 
+                        p.subTitle Наша фірма -лідер на ринку у своїй сфері
+                        a(href="#nextBlock").doule-arrow
+                            svg  
+                                use(xlink:href="#douleArrow")
+            #nextBlock.container.py-3
+                .row
+                    .col-12.col-lg-3
+                        .aboutInfo.title-paragraph 
+                            h2.mb-4 про нашу компанію
+                            p.mb-5 Наша компанія пропонує ряд цікавих-розважальних послуг, які принесуть вам ряд вражень!
+                            a(href="#").accent-btn.mb-3 детальніше
+                            p.expl * - зверніть увагу, зміна ціни може залежати від курсу долара.
+                    .col-12.col-lg-9 
+                        .row.justify-content-between 
+                            .col-12.col-sm-6.col-lg-4
+                                +card(planTrip.first)
+                            .col-12.col-sm-6.col-lg-4
+                                +card(planTrip.second)
+                            .col-12.col-sm-6.col-lg-4.mx-auto
+                                +card(planTrip.third)
+                        .text-center
+                            a(href="#").aboutInfo-roundArrow.rounded-arrow дивитись усі плани
+                                svg 
+                                    use(xlink:href="#roundedArrow")
+                hr
+                .row.main-info
+                    .col-12.col-lg-4
+                        img.w-100.mb-3.mb-lg-0(src="../img/island.jpg", alt="island")
+                    .col-12.col-lg-8.title-paragraph
+                        h2.info-island.mb-4 Дивовижний безлюдний острів, який зводить людей з розуму
+                        .row.info-benef.gy-5
+                            .col-12.col-xl-7
+                                p.mb-4.color-dark-text Пхукет - курортно-туристична Мекка Таїланду. Білосніжний пісок, і бірюзове море, і мальовничі скелі, а на них же, трохи вище - буйна тропічна рослинність. Все це можна побачити на власні очі.
+                                .info-btns.d-flex.flex-wrap.gap-2 
+                                    a(href="#").accent-btn замовити тур
+                                    a(href="#").accent-btn.accent--mod детальніше
+                            .col-12.col-xl-5
+                                .info-price.text-center.px-5.py-4.d-flex.align-items-center 
+                                    .w-100
+                                        p.p-prym.fst-normal.mb-1 575 грн./день
+                                        p.gray-text.fst-normal В дану вартість входить обслуговування персоналу, вечеря і захоплюючі історії. 
+            .container-fluid.second-info 
+                .container
+                    .row.row-gap-5 
+                        .col-12.col-lg-6
+                            .second-title
+                                h2.mb-3 СПІЙМАЙ ХВИЛЮ 
+                                    span ЖИВИ ЯСКРАВО!
+                                p.pe-3 Полюбляєш екстрим та пригоди? Тоді тобі точно до нас! Мрієш стати на сапборд, але ніяк не міг наважитсь? Наші досвдчені інструктори навчать тебе вміло «піймати хвилі» та відчути себе справжнім сьорфером!
+                                a.accent-btn(href="#") детальніше
+                        .col-12.col-lg-6 
+                            //- коментар\цитата в нтмл-5
+                            blockquote.comment-block.py-5.my-2
+                                svg.quote 
+                                    use(xlink:href="#quote") 
+                                
+                                p.fst-italic.mx-auto.mb-3.pe-2 Чудова туристична фірма, що повністю виправдала мої очікування від подорожі. Я був приємно вражений екскурсіями, що для мене підібрали, працюють спражні професіонали своєї справи. 
+                                cite.d-block.fst-normal.text-center.mb-1 Олег Набережний
+                                    span.d-block.mb-3 клієнт
+                                    img(src="img/pers-client.jpg", alt="client")
+            
+            .container 
+                .special-offer.title-paragraph.text-center 
+                    h2 Спеціальні пропозиції тижня
+                    p Гарячі праозиції, по-швидше обирай і поїхали!
+                .row 
+                    .col-12.col-md-6.col-lg-3
+                        +specialOffer(weekOffer.first) 
+                    .col-12.col-md-6.col-lg-3
+                        +specialOffer(weekOffer.second) 
+                    .col-12.col-md-6.col-lg-3 
+                        +specialOffer(weekOffer.third)
+                    .col-12.col-md-6.col-lg-3 
+                        +specialOffer(weekOffer.fourth)
+                hr 
+            .container.exta-info 
+                .row.g-4 
+                    .col-12.col-md-12.col-lg-12.col-xl-3.title-paragraph.text-center
+                        h2 додаткова інформація
+                    .col-12.col-md-6.col-lg-4.col-xl-3
+                        .ei-schedule 
+                            +information(extraInfo.schedule)
+                    .col-12.col-md-6.col-lg-4.col-xl-3
+                        .ei-food
+                            +information(extraInfo.food)
+                    .col-12.col-md-6.col-lg-4.col-xl-3.mx-auto
+                        .manager-ask.text-center
+                            p.pos-a задати питання
+                            p.manager-benef.gray-text.m-auto.pb-4 Скажіть доброго дня нашому консультанту, і ми з радістю відповімо на Ваші запитання
+                            a(href="tel:+380505698511").ps-4.mb-3 +38 (050) 56 98 511
+                                svg 
+                                    use(xlink:href="#call")
+                            //- не можу зробити відступ вниз 24px
+                            p.lh-1.mb-1 Анна Миколаївна
+                            p.lh-1.gray-text.mb-4 консультант
+                            img(src="../img/pers-manager.jpg", alt="personal manager")
+
+        main 
+        footer 
+            .container-fluid.footer-background
+            p.copy-footer.text-center.p-2 &copy; 2016 Cars.com All rights reserved. 
+
+        script(src="js/scripts.js")
+         

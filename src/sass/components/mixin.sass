@@ -1,0 +1,52 @@
+$primary: #0099ff
+$accent: #ffb700
+
+=media($size)
+    @media screen and (min-width: #{$size}px)
+        @content
+
+
+=cardStyle ()
+    padding: 1.87rem 1.25rem 3.12rem
+    transition: all 0.3s ease
+    &:hover
+        box-shadow: 0px 4px 10.5px rgba(3,20,31,0.05)
+        background-color: #fff
+    .title-svg
+        margin-bottom: 1.56rem
+        height: 3.7rem
+        width: 3.7rem
+        fill: $accent
+    h3
+        margin: 0
+        font-size: 1.12rem
+        color: #333333
+    .price
+        margin: 0
+        color: $primary
+        font-size: 1.5rem
+
+
+=stars ()
+    &.greenStar
+        position: relative
+        &::before
+            content: ''
+            position: absolute
+            left: 0
+            top: 0
+            border: 30px solid transparent 
+            border-top-color: #26cb15 
+            border-left-color: #26cb15 
+            z-index: 1
+        &::after
+            content: url(../img/star.svg)
+            position: absolute
+            left: 0.6rem
+            top: 0.6rem
+            height: 1rem
+            width: 1rem
+            fill: #fff
+            z-index: 1
+
+
